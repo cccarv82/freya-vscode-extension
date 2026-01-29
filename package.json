@@ -1,0 +1,69 @@
+{
+  "name": "freya-vscode-extension",
+  "displayName": "FREYA (Local-first Status Assistant)",
+  "description": "Local-first status reports (exec/SM/blockers/daily) with one-click publish to Discord/Teams.",
+  "version": "0.0.1",
+  "publisher": "cccarv82",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Productivity"],
+  "activationEvents": [
+    "onCommand:freya.initWorkspace",
+    "onCommand:freya.updateWorkspace",
+    "onCommand:freya.generateExecutiveReport",
+    "onCommand:freya.generateSmWeeklyReport",
+    "onCommand:freya.generateBlockersReport",
+    "onCommand:freya.generateDailySummary",
+    "onCommand:freya.publishLastReport"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "freya.initWorkspace", "title": "FREYA: Init Workspace" },
+      { "command": "freya.updateWorkspace", "title": "FREYA: Update Workspace (preserve data/logs)" },
+      { "command": "freya.generateExecutiveReport", "title": "FREYA: Generate Executive Report" },
+      { "command": "freya.generateSmWeeklyReport", "title": "FREYA: Generate Scrum Master Weekly Report" },
+      { "command": "freya.generateBlockersReport", "title": "FREYA: Generate Blockers Report" },
+      { "command": "freya.generateDailySummary", "title": "FREYA: Generate Daily Summary" },
+      { "command": "freya.publishLastReport", "title": "FREYA: Publish Last Generated Report" }
+    ],
+    "configuration": {
+      "title": "FREYA",
+      "properties": {
+        "freya.workspaceFolder": {
+          "type": "string",
+          "default": "freya",
+          "description": "Workspace folder name to init/update under the current workspace root."
+        },
+        "freya.cliPackage": {
+          "type": "string",
+          "default": "@cccarv82/freya",
+          "description": "NPM package used to bootstrap/update a FREYA workspace (used by npx)."
+        },
+        "freya.discordWebhookUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Discord Incoming Webhook URL for one-click publish."
+        },
+        "freya.teamsWebhookUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Microsoft Teams Incoming Webhook URL for one-click publish."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint .",
+    "test": "node ./dist/extension.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.3",
+    "eslint": "^8.56.0"
+  }
+}

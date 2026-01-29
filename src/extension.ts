@@ -3,6 +3,7 @@ import { spawn } from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as https from 'https';
+import { openOnboardingPanel } from './onboarding';
 
 let lastGeneratedReportPath: string | null = null;
 
@@ -195,6 +196,10 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.window.showInformationMessage(`Published report: ${path.basename(lastGeneratedReportPath)}`);
   });
 
+  const openOnboarding = vscode.commands.registerCommand('freya.openOnboarding', async () => {
+    openOnboardingPanel(context);
+  });
+
   context.subscriptions.push(
     output,
     initWorkspace,
@@ -203,7 +208,8 @@ export function activate(context: vscode.ExtensionContext) {
     generateSmWeeklyReport,
     generateBlockersReport,
     generateDailySummary,
-    publishLastReport
+    publishLastReport,
+    openOnboarding
   );
 }
 

@@ -15,7 +15,8 @@
     "onCommand:freya.generateSmWeeklyReport",
     "onCommand:freya.generateBlockersReport",
     "onCommand:freya.generateDailySummary",
-    "onCommand:freya.publishLastReport"
+    "onCommand:freya.publishLastReport",
+    "onCommand:freya.openOnboarding"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -26,7 +27,8 @@
       { "command": "freya.generateSmWeeklyReport", "title": "FREYA: Generate Scrum Master Weekly Report" },
       { "command": "freya.generateBlockersReport", "title": "FREYA: Generate Blockers Report" },
       { "command": "freya.generateDailySummary", "title": "FREYA: Generate Daily Summary" },
-      { "command": "freya.publishLastReport", "title": "FREYA: Publish Last Generated Report" }
+      { "command": "freya.publishLastReport", "title": "FREYA: Publish Last Generated Report" },
+      { "command": "freya.openOnboarding", "title": "FREYA: Setup / Onboarding" }
     ],
     "configuration": {
       "title": "FREYA",
